@@ -3,27 +3,34 @@ describe('empty spec', () => {
     cy.visit('https://www.saucedemo.com')
   })
   // This test Suite focuses on the addition and removal of items using the inventory page. 
+  //First we need to navigate to the inventory page by successfully logging in
   it('should allow a user to be redirected to the landing page when a correct username and password is entered',()=>{  
     cy.visit('https://www.saucedemo.com'); 
     cy.get('#user-name.input_error.form_input').type('standard_user{enter}');
     cy.get('#password.input_error.form_input').type('secret_sauce{enter}');
     cy.get('#login-button').click();
     cy.url().should('contain', 'https://www.saucedemo.com/inventory.html');
-    //Checks for sauce-labs-backpack
+
+    //Sauce-labs-backpack was viewed using both the image that was present and the link that was highlighted in red.
+    // The bagpack was also added to the cart using the inventory page.  
     cy.get('#item_4_img_link > .inventory_item_img').click();
     cy.url().should('contain', 'https://www.saucedemo.com/inventory-item.html?id=4');
     cy.get('[data-test="add-to-cart-sauce-labs-backpack"]').click()
     cy.go('back')
     cy.get('#item_4_title_link > .inventory_item_name').click()
     cy.get('[data-test="back-to-products"]').click()
-    /// bicycle lights
+
+    // bicycle light was viewed using both the image that was present and the link that was highlighted in red.
+    //The bicycle light was also added to the cart using the inventory page
     cy.get('#item_0_img_link > .inventory_item_img').click();
     cy.url().should('contain', 'https://www.saucedemo.com/inventory-item.html?id=0');
     cy.get('[data-test="add-to-cart-sauce-labs-bike-light"]').click()
     cy.go('back')
     cy.get('#item_0_title_link > .inventory_item_name').click()
     cy.get('[data-test="back-to-products"]').click()
-    //Tshirt
+
+    //Tshirt was viewed using both the image that was present and the link that was highlighted in red.
+    // The Tshirt was also added to the cart using the inventory page
     cy.get('#item_1_img_link > .inventory_item_img').click();
     cy.url().should('contain', 'https://www.saucedemo.com/inventory-item.html?id=1');
     cy.get('[data-test="add-to-cart-sauce-labs-bolt-t-shirt"]').click()
@@ -31,7 +38,8 @@ describe('empty spec', () => {
     cy.get('#item_1_title_link > .inventory_item_name').click()
     cy.get('[data-test="back-to-products"]').click()
 
-    // Jacket
+    // Jacket was viewed using both the image that was present and the link that was highlighted in red.
+    // The jacket was also added to the cart using the inventory page
     cy.get('#item_5_img_link > .inventory_item_img').click();
     cy.url().should('contain', 'https://www.saucedemo.com/inventory-item.html?id=5');
     cy.get('[data-test="add-to-cart-sauce-labs-fleece-jacket"]').click()
@@ -39,14 +47,17 @@ describe('empty spec', () => {
     cy.get('#item_5_title_link > .inventory_item_name').click()
     cy.get('[data-test="back-to-products"]').click()
     
-    // onesie
+    // Onesie was viewed using both the image that was present and the link that was highlighted in red.
+    // The onsie was also added to the cart using the inventory page
     cy.get('#item_2_img_link > .inventory_item_img').click();
     cy.url().should('contain', 'https://www.saucedemo.com/inventory-item.html?id=2');
     cy.get('[data-test="add-to-cart-sauce-labs-onesie"]').click()
     cy.go('back')
     cy.get('#item_2_title_link > .inventory_item_name').click()
     cy.get('[data-test="back-to-products"]').click()
-    // Test all things red t shirt
+
+    // All things red-t-shirt was viewed using both the image that was present and the link that was highlighted in red.
+    // All things red-t-shirt was also added to the cart using the inventory page
     cy.get('#item_3_img_link > .inventory_item_img').click();
     cy.url().should('contain', 'https://www.saucedemo.com/inventory-item.html?id=3');
     cy.get('[data-test="add-to-cart-test.allthethings()-t-shirt-(red)"]').click()
@@ -54,24 +65,25 @@ describe('empty spec', () => {
     cy.get('#item_3_title_link > .inventory_item_name').click()
     cy.get('[data-test="back-to-products"]').click()
 
-    //Sort
-    cy.get('[data-test="product_sort_container"]').click
-
+    
     // Removing all items 
+    //The backpack was removed from the cart using the inventory screen successfully
     cy.get('#item_4_img_link > .inventory_item_img').click();
     cy.url().should('contain', 'https://www.saucedemo.com/inventory-item.html?id=4');
     cy.get('[data-test="remove-sauce-labs-backpack"]').click()
     cy.go('back')
     cy.get('#item_4_title_link > .inventory_item_name').click()
     cy.get('[data-test="back-to-products"]').click()
-    /// bicycle lights
+
+    /// The bicycle lights was removed from the cart using the inventory screen successfully
     cy.get('#item_0_img_link > .inventory_item_img').click();
     cy.url().should('contain', 'https://www.saucedemo.com/inventory-item.html?id=0');
     cy.get('[data-test="remove-sauce-labs-bike-light"]').click()
     cy.go('back')
     cy.get('#item_0_title_link > .inventory_item_name').click()
     cy.get('[data-test="back-to-products"]').click()
-    //Tshirt
+    
+    //The Tshirt was removed from the cart using the inventory screen successfully 
     cy.get('#item_1_img_link > .inventory_item_img').click();
     cy.url().should('contain', 'https://www.saucedemo.com/inventory-item.html?id=1');
     cy.get('[data-test="remove-sauce-labs-bolt-t-shirt"]').click()
@@ -79,7 +91,7 @@ describe('empty spec', () => {
     cy.get('#item_1_title_link > .inventory_item_name').click()
     cy.get('[data-test="back-to-products"]').click()
 
-    // Jacket
+    //The Jacket was removed from the cart using the inventory screen successfully
     cy.get('#item_5_img_link > .inventory_item_img').click();
     cy.url().should('contain', 'https://www.saucedemo.com/inventory-item.html?id=5');
     cy.get('[data-test="remove-sauce-labs-fleece-jacket"]').click()
@@ -87,14 +99,15 @@ describe('empty spec', () => {
     cy.get('#item_5_title_link > .inventory_item_name').click()
     cy.get('[data-test="back-to-products"]').click()
     
-    // onesie
+    // The onesie was removed from the cart using the inventory screen successfully
     cy.get('#item_2_img_link > .inventory_item_img').click();
     cy.url().should('contain', 'https://www.saucedemo.com/inventory-item.html?id=2');
     cy.get('[data-test="remove-sauce-labs-onesie"]').click()
     cy.go('back')
     cy.get('#item_2_title_link > .inventory_item_name').click()
     cy.get('[data-test="back-to-products"]').click()
-    // Test all things red t shirt
+    
+    // The Test all things red-t-shirt was removed from the cart using the inventory screen successfully
     cy.get('#item_3_img_link > .inventory_item_img').click();
     cy.url().should('contain', 'https://www.saucedemo.com/inventory-item.html?id=3');
     cy.get('[data-test="remove-test.allthethings()-t-shirt-(red)"]').click()
@@ -103,7 +116,7 @@ describe('empty spec', () => {
     cy.get('[data-test="back-to-products"]').click()
 
 
-    ///Clicking add cart for all items simultaneously
+    // In this scenario, all items were added to the cart back to back to see if the system could manage.  
     cy.get('[data-test="add-to-cart-sauce-labs-backpack"]').click()
     cy.get('[data-test="add-to-cart-sauce-labs-bike-light"]').click()
     cy.get('[data-test="add-to-cart-sauce-labs-bolt-t-shirt"]').click()
@@ -111,15 +124,13 @@ describe('empty spec', () => {
     cy.get('[data-test="add-to-cart-sauce-labs-onesie"]').click()
     cy.get('[data-test="add-to-cart-test.allthethings()-t-shirt-(red)"]').click()
 
-    // Removing all items using the remove button on the inventory page
+    // In this scenario, all items were removed from the cart back to back to see if the system could manage.  
     cy.get('[data-test="remove-sauce-labs-bike-light"]').click()
     cy.get('[data-test="remove-sauce-labs-bolt-t-shirt"]').click()
     cy.get('[data-test="remove-sauce-labs-fleece-jacket"]').click()
     cy.get('[data-test="remove-sauce-labs-onesie"]').click()
     cy.get('[data-test="remove-test.allthethings()-t-shirt-(red)"]').click()
   });
-
+ 
   
-    //cy.go('https://www.saucedemo.com/inventory-item.html?id=4');
-   
 })

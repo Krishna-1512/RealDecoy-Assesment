@@ -10,9 +10,11 @@ describe('empty spec', () => {
     cy.get('#login-button').click();
     cy.url().should('contain', 'https://www.saucedemo.com/inventory.html');
     // Logout 
-    cy.get('.bm-item-list').click()
-    //cy.get('#logout_sidebar_link').click()
-    //cy.get('#react-burger-menu-bin').click()
+    //cy.get('.bm-item-list').click()
+    // cy.get('.header_label').click()
+    // cy.get('#logout.button').click()
+    cy.get('#menu_button_container').dblclick();
+        //cy.get('.react-burger-menu-bin').click()
     
   })
 });

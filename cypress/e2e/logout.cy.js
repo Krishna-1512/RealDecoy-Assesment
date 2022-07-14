@@ -14,7 +14,7 @@ describe('empty spec', () => {
     // cy.get('.header_label').click()
     // cy.get('#logout.button').click()
     cy.get('#menu_button_container').dblclick();
-        //cy.get('.react-burger-menu-bin').click()
+    //cy.get('.react-burger-menu-bin').click()
     
   })
 });
